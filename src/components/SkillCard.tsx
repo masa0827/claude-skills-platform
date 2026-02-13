@@ -34,15 +34,31 @@ export const SkillCard = ({ skill }: { skill: Skill }) => {
                 {skill.name}
             </h3>
 
-            <p className="text-sm text-slate-500 mb-4 line-clamp-2 leading-relaxed">
+            <p className="text-sm text-slate-500 mb-3 line-clamp-2 leading-relaxed">
                 {skill.description}
             </p>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-6">
-                {skill.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] font-medium px-2 py-1 bg-slate-100 text-slate-600 rounded">
-                        #{tag}
+            {/* アウトカムスニペット */}
+            {skill.examples.length > 0 && (
+                <p className="text-xs text-blue-600 bg-blue-50 rounded-lg px-3 py-2 mb-4 line-clamp-1">
+                    例: {skill.examples[0].title}
+                </p>
+            )}
+
+            {/* AIツール互換アイコン */}
+            <div className="flex gap-1.5 mb-4">
+                {[
+                    { name: 'GPT', color: '#10a37f' },
+                    { name: 'Claude', color: '#d97706' },
+                    { name: 'Gemini', color: '#4285f4' },
+                    { name: 'Copilot', color: '#7c3aed' },
+                ].map((t) => (
+                    <span
+                        key={t.name}
+                        className="text-[9px] font-bold px-1.5 py-0.5 rounded"
+                        style={{ color: t.color, backgroundColor: t.color + '12' }}
+                    >
+                        {t.name}
                     </span>
                 ))}
             </div>
