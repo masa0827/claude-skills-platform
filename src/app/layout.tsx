@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans_JP } from "next/font/google";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,8 +21,8 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "AI Skills Library | ビジネス向けAIスキル集",
-  description: "プロが作ったAIスキルを、Claude.aiにインストールするだけ。毎回のコピペ不要で、Claudeが自動でスキルを適用します。",
+  title: "AIプロンプト集 | ビジネス向けAIスキルライブラリ",
+  description: "ChatGPT・Claude・Gemini対応。プロが作ったビジネス向けAIプロンプトを無料で使えるライブラリ。コピーして貼り付けるだけ。",
 };
 
 export default function RootLayout({
@@ -33,7 +35,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSansJP.variable} font-[family-name:var(--font-noto-sans-jp)] antialiased`}
       >
-        {children}
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );

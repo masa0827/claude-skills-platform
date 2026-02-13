@@ -20,3 +20,19 @@ export interface Skill {
   difficulty: 'かんたん' | 'ふつう' | 'しっかり';
   examples: SkillExample[];
 }
+
+export type AiTool = 'chatgpt' | 'claude' | 'gemini' | 'copilot';
+
+export interface AiToolInfo {
+  id: AiTool;
+  name: string;
+  color: string;
+}
+
+export interface CategoryMeta {
+  id: string;
+  label: string;
+  iconName: string;
+  description: string;
+  color: string;
+}

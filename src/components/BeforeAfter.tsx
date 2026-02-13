@@ -50,7 +50,7 @@ export function BeforeAfter({ examples }: { examples: SkillExample[] }) {
                         }`}
                     >
                         <Sparkles className="w-4 h-4" />
-                        Claudeの出力
+                        AIの出力結果
                     </button>
                     <button
                         onClick={() => setActiveTab('input')}
@@ -72,7 +72,7 @@ export function BeforeAfter({ examples }: { examples: SkillExample[] }) {
                         </div>
                     ) : (
                         <div className="bg-green-50 rounded-lg p-4 border border-green-100">
-                            <p className="text-sm text-slate-500 mb-2 font-medium">Claudeにこう伝えます:</p>
+                            <p className="text-sm text-slate-500 mb-2 font-medium">AIにこう伝えます:</p>
                             <p className="text-sm text-slate-800 whitespace-pre-wrap">{example.input}</p>
                         </div>
                     )}
