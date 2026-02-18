@@ -5,6 +5,12 @@ export interface SkillExample {
   context?: string;
 }
 
+export interface SkillStep {
+  number: number;
+  title: string;
+  description: string;
+}
+
 export interface Skill {
   id: string;
   name: string;
@@ -19,6 +25,14 @@ export interface Skill {
   timeSaved: string;
   difficulty: 'かんたん' | 'ふつう' | 'しっかり';
   examples: SkillExample[];
+  /** AIにそのまま貼り付けて使えるプロンプトテンプレート */
+  promptTemplate?: string;
+  /** ステップバイステップの使い方ガイド */
+  steps?: SkillStep[];
+  /** こんなときに使えます（具体的なユースケース） */
+  useCases?: string[];
+  /** より良い結果を出すためのコツ */
+  tips?: string[];
 }
 
 export type AiTool = 'chatgpt' | 'claude' | 'gemini' | 'copilot';

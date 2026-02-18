@@ -8,11 +8,9 @@ export const AI_TOOLS: AiToolInfo[] = [
 ];
 
 export const CATEGORIES: CategoryMeta[] = [
-    { id: 'ライティング', label: 'ライティング', iconName: 'PenTool', description: 'ブログ・メール・SNS投稿', color: 'blue' },
-    { id: '資料作成', label: '資料作成', iconName: 'FileText', description: 'プレゼン・議事録', color: 'purple' },
-    { id: '分析・リサーチ', label: '分析・リサーチ', iconName: 'BarChart3', description: '競合分析・顧客調査', color: 'emerald' },
-    { id: '業務効率化', label: '業務効率化', iconName: 'Zap', description: '契約書・Excel', color: 'amber' },
-    { id: 'マーケティング', label: 'マーケティング', iconName: 'Target', description: 'LP・価格・配信設計', color: 'rose' },
-    { id: 'SEO・広告', label: 'SEO・広告', iconName: 'Search', description: 'SEO診断・広告運用', color: 'cyan' },
-    { id: '顧客対応', label: '顧客対応', iconName: 'Headphones', description: 'クレーム対応', color: 'orange' },
+    { id: '営業', label: '営業', iconName: 'Handshake', description: '提案書・商談・フォロー', color: 'blue' },
+    { id: 'マーケティング', label: 'マーケティング', iconName: 'Megaphone', description: 'コンテンツ・SNS・SEO・広告', color: 'purple' },
+    { id: 'カスタマーサポート', label: 'カスタマーサポート', iconName: 'Headphones', description: '問い合わせ・FAQ・クレーム対応', color: 'orange' },
+    { id: 'バックオフィス', label: 'バックオフィス', iconName: 'Building2', description: '経理・総務・法務・事務', color: 'emerald' },
+    { id: '企画・リサーチ', label: '企画・リサーチ', iconName: 'Lightbulb', description: '戦略立案・調査・分析', color: 'amber' },
 ];

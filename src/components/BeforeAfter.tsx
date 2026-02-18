@@ -12,7 +12,7 @@ export function BeforeAfter({ examples }: { examples: SkillExample[] }) {
 
     return (
         <div className="mb-8">
-            <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <h2 className="text-[17px] font-semibold text-[#1d1d1f] mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-amber-500" />
                 使用例
             </h2>
@@ -23,10 +23,10 @@ export function BeforeAfter({ examples }: { examples: SkillExample[] }) {
                         <button
                             key={i}
                             onClick={() => { setActiveIndex(i); setActiveTab('output'); }}
-                            className={`px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+                            className={`px-3 py-1.5 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
                                 activeIndex === i
-                                    ? 'bg-slate-900 text-white'
-                                    : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                                    ? 'bg-[#1d1d1f] text-white'
+                                    : 'bg-[#f5f5f7] text-[#424245] hover:bg-[#e8e8ed]'
                             }`}
                         >
                             {ex.title}
@@ -36,17 +36,17 @@ export function BeforeAfter({ examples }: { examples: SkillExample[] }) {
             )}
 
             {example.context && (
-                <p className="text-sm text-slate-500 mb-3">{example.context}</p>
+                <p className="text-[14px] text-[#86868b] mb-3">{example.context}</p>
             )}
 
-            <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-                <div className="flex border-b border-slate-200">
+            <div className="bg-white rounded-2xl overflow-hidden border border-black/5">
+                <div className="flex border-b border-black/5">
                     <button
                         onClick={() => setActiveTab('output')}
-                        className={`flex-1 px-4 py-3 text-sm font-bold flex items-center justify-center gap-2 transition-colors ${
+                        className={`flex-1 px-4 py-3 text-[13px] font-semibold flex items-center justify-center gap-2 transition-colors ${
                             activeTab === 'output'
-                                ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50/50'
-                                : 'text-slate-400 hover:text-slate-600'
+                                ? 'text-[#1d1d1f] border-b-2 border-[#1d1d1f] bg-white'
+                                : 'text-[#86868b] hover:text-[#424245]'
                         }`}
                     >
                         <Sparkles className="w-4 h-4" />
@@ -54,10 +54,10 @@ export function BeforeAfter({ examples }: { examples: SkillExample[] }) {
                     </button>
                     <button
                         onClick={() => setActiveTab('input')}
-                        className={`flex-1 px-4 py-3 text-sm font-bold flex items-center justify-center gap-2 transition-colors ${
+                        className={`flex-1 px-4 py-3 text-[13px] font-semibold flex items-center justify-center gap-2 transition-colors ${
                             activeTab === 'input'
-                                ? 'text-green-600 border-b-2 border-green-600 bg-green-50/50'
-                                : 'text-slate-400 hover:text-slate-600'
+                                ? 'text-[#1d1d1f] border-b-2 border-[#1d1d1f] bg-white'
+                                : 'text-[#86868b] hover:text-[#424245]'
                         }`}
                     >
                         <MessageSquare className="w-4 h-4" />
@@ -67,13 +67,13 @@ export function BeforeAfter({ examples }: { examples: SkillExample[] }) {
 
                 <div className="p-6 max-h-[500px] overflow-y-auto">
                     {activeTab === 'output' ? (
-                        <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">
+                        <div className="text-[14px] text-[#1d1d1f] leading-relaxed whitespace-pre-wrap">
                             {example.output}
                         </div>
                     ) : (
-                        <div className="bg-green-50 rounded-lg p-4 border border-green-100">
-                            <p className="text-sm text-slate-500 mb-2 font-medium">AIにこう伝えます:</p>
-                            <p className="text-sm text-slate-800 whitespace-pre-wrap">{example.input}</p>
+                        <div className="bg-[#f5f5f7] rounded-xl p-4">
+                            <p className="text-[13px] text-[#86868b] mb-2 font-medium">AIにこう伝えます:</p>
+                            <p className="text-[14px] text-[#1d1d1f] whitespace-pre-wrap">{example.input}</p>
                         </div>
                     )}
                 </div>

@@ -1,23 +1,26 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Copy, Sparkles, ChevronDown } from 'lucide-react';
+import { ChevronDown, Search, Copy, Zap } from 'lucide-react';
 
 const steps = [
     {
         icon: Search,
+        num: '1',
         title: 'スキルを探す',
-        description: 'カテゴリや検索から、業務に合ったスキルを見つけます。',
+        description: 'カテゴリ、検索、またはAIチャットで業務に合ったスキルを見つけます。',
     },
     {
         icon: Copy,
-        title: 'プロンプトをコピー',
-        description: '「プロンプトをコピーする」ボタンで、スキルの内容をコピー。',
+        num: '2',
+        title: 'コピーしてAIに設定',
+        description: 'スキルをコピーしてAIに貼り付け。Claude.aiなら設定画面からインストールするだけ。',
     },
     {
-        icon: Sparkles,
-        title: 'AIに貼り付ける',
-        description: 'ChatGPT・Claude・Geminiなど、お使いのAIに貼り付けて実行。',
+        icon: Zap,
+        num: '3',
+        title: '話しかけるだけで自動起動',
+        description: 'AIが会話の文脈を読み取り、最適なスキルを自動で起動。指示不要で専門家レベルの成果物が出てきます。',
     },
 ];
 
@@ -25,16 +28,16 @@ function Accordion({ title, children }: { title: string; children: React.ReactNo
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="border border-slate-200 rounded-lg overflow-hidden">
+        <div className="bg-white rounded-2xl overflow-hidden">
             <button
                 onClick={() => setOpen(!open)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between px-6 py-4 text-left text-[15px] font-medium text-[#1d1d1f] hover:bg-[#f5f5f7] transition-colors"
             >
                 {title}
-                <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${open ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-[#86868b] transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
             </button>
             {open && (
-                <div className="px-5 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                <div className="px-6 pb-5 text-[14px] text-[#86868b] leading-relaxed border-t border-black/5 pt-4">
                     {children}
                 </div>
             )}
@@ -44,50 +47,71 @@ function Accordion({ title, children }: { title: string; children: React.ReactNo
 
 export function HowToSection() {
     return (
-        <section id="how-to-use" className="section-padding">
-            <div className="max-w-3xl mx-auto">
-                <h2 className="text-2xl font-bold text-slate-900 mb-2 text-center">
-                    使い方はかんたん3ステップ
-                </h2>
-                <p className="text-sm text-slate-500 text-center mb-10">
-                    専門知識は不要。コピー&ペーストだけでAIの力を引き出せます。
-                </p>
+        <section id="how-to-use" className="py-24 px-6">
+            <div className="max-w-[720px] mx-auto">
+                <div className="text-center mb-14">
+                    <h2 className="text-[32px] md:text-[40px] font-semibold tracking-tight text-[#1d1d1f] leading-tight mb-3">
+                        3ステップで始められます。
+                    </h2>
+                    <p className="text-[17px] text-[#86868b]">
+                        専門知識は不要です。
+                    </p>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    {steps.map((step, i) => (
-                        <div key={step.title} className="text-center">
-                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 mb-4">
-                                <step.icon className="w-6 h-6 text-blue-600" />
+                <div className="space-y-6 mb-14">
+                    {steps.map((step) => {
+                        const StepIcon = step.icon;
+                        return (
+                            <div key={step.title} className="flex gap-5 items-start">
+                                <div className="w-12 h-12 rounded-2xl bg-[#f5f5f7] flex items-center justify-center shrink-0">
+                                    <StepIcon className="w-5 h-5 text-[#1d1d1f]" />
+                                </div>
+                                <div className="pt-1">
+                                    <div className="text-[11px] font-semibold text-[#86868b] uppercase tracking-wider mb-1">
+                                        Step {step.num}
+                                    </div>
+                                    <h3 className="font-semibold text-[#1d1d1f] text-[17px] mb-1">{step.title}</h3>
+                                    <p className="text-[15px] text-[#86868b] leading-relaxed">{step.description}</p>
+                                </div>
                             </div>
-                            <div className="text-xs font-bold text-blue-600 mb-1">STEP {i + 1}</div>
-                            <h3 className="font-bold text-slate-900 mb-1">{step.title}</h3>
-                            <p className="text-sm text-slate-500 leading-relaxed">{step.description}</p>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 <div className="space-y-3">
-                    <Accordion title="Claude.aiユーザー向け: スキルインストール">
-                        <p className="mb-2">
-                            Claude.aiをお使いの方は、スキルをZIPファイルでダウンロードし、
-                            Claude.aiのプロジェクトにアップロードすることで、毎回コピペ不要で自動適用されます。
+                    <Accordion title="Claude.aiでスキルをインストールする方法">
+                        <p className="mb-3">
+                            Claude.aiでは、スキルをZIPファイルでダウンロードし、
+                            設定画面からインストールすることで自動起動が有効になります。
+                            会話のたびにコピペする必要はありません。
                         </p>
-                        <ol className="list-decimal list-inside space-y-1">
+                        <ol className="list-decimal list-inside space-y-1.5 text-[#86868b]">
                             <li>スキル詳細ページで「Claude用ZIP」をダウンロード</li>
-                            <li>Claude.aiでプロジェクトを作成</li>
-                            <li>プロジェクトにZIPを展開したファイルをアップロード</li>
+                            <li>Claude.aiの設定 &gt; 機能 &gt; スキル からアップロード</li>
+                            <li>以降、関連する会話でAIが自動的にスキルを起動</li>
                         </ol>
                     </Accordion>
-                    <Accordion title="開発者向け: Claude Codeで使う">
-                        <p className="mb-2">
-                            Claude Code（CLI）をお使いの方は、MDファイルをダウンロードしてプロジェクトの
-                            <code className="px-1 py-0.5 bg-slate-100 rounded text-xs">.claude/</code>
-                            ディレクトリに配置できます。
+                    <Accordion title="Claude Codeで使う方法（開発者向け）">
+                        <p className="mb-3">
+                            Claude Code（CLI）では、MDファイルをプロジェクトの
+                            <code className="px-1.5 py-0.5 bg-[#f5f5f7] rounded text-xs font-mono">.claude/skills/</code>
+                            ディレクトリに配置するだけで自動認識されます。
                         </p>
-                        <ol className="list-decimal list-inside space-y-1">
+                        <ol className="list-decimal list-inside space-y-1.5 text-[#86868b]">
                             <li>スキル詳細ページで「MDファイル」をダウンロード</li>
-                            <li>プロジェクトの <code className="px-1 py-0.5 bg-slate-100 rounded text-xs">.claude/commands/</code> に配置</li>
-                            <li>Claude Codeで <code className="px-1 py-0.5 bg-slate-100 rounded text-xs">/skill-name</code> として利用</li>
+                            <li>プロジェクトの <code className="px-1.5 py-0.5 bg-[#f5f5f7] rounded text-xs font-mono">.claude/skills/</code> に配置</li>
+                            <li>Claudeが文脈に応じてスキルを自動起動</li>
+                        </ol>
+                    </Accordion>
+                    <Accordion title="他のAIツール（ChatGPT / Gemini / Copilot）で使う方法">
+                        <p className="mb-3">
+                            どのAIツールでも、スキルの内容をコピーして会話の最初に貼り付けるだけで使えます。
+                            カスタム指示（Custom Instructions）に設定すれば、毎回のコピペも不要になります。
+                        </p>
+                        <ol className="list-decimal list-inside space-y-1.5 text-[#86868b]">
+                            <li>スキル詳細ページで「スキルをコピー」をクリック</li>
+                            <li>お使いのAIツールを開く</li>
+                            <li>新しい会話の最初にペーストするか、カスタム指示に設定</li>
                         </ol>
                     </Accordion>
                 </div>
