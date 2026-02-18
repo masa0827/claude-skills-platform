@@ -3,86 +3,63 @@
 import React from 'react';
 import { Skill } from '@/lib/types';
 import * as Icons from 'lucide-react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export const SkillCard = ({ skill }: { skill: Skill }) => {
-    const Icon = (Icons as any)[skill.iconName] || Icons.Box;
+const CATEGORY_ACCENT: Record<string, { bg: string; text: string; icon: string }> = {
+    '営業': { bg: 'bg-blue-50', text: 'text-blue-600', icon: 'text-blue-500' },
+    'マーケティング': { bg: 'bg-violet-50', text: 'text-violet-600', icon: 'text-violet-500' },
+    'カスタマーサポート': { bg: 'bg-orange-50', text: 'text-orange-600', icon: 'text-orange-500' },
+    'バックオフィス': { bg: 'bg-emerald-50', text: 'text-emerald-600', icon: 'text-emerald-500' },
+    '企画・リサーチ': { bg: 'bg-amber-50', text: 'text-amber-600', icon: 'text-amber-500' },
+};
 
-    const difficultyColor = {
-        'かんたん': 'bg-green-100 text-green-700',
-        'ふつう': 'bg-yellow-100 text-yellow-700',
-        'しっかり': 'bg-red-100 text-red-700',
-    }[skill.difficulty];
+const DIFFICULTY_STYLE: Record<string, string> = {
+    'かんたん': 'text-emerald-600 bg-emerald-50',
+    'ふつう': 'text-amber-600 bg-amber-50',
+    'しっかり': 'text-rose-600 bg-rose-50',
+};
+
+export const SkillCard = ({ skill }: { skill: Skill }) => {
+    const Icon = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[skill.iconName] || Icons.Box;
+    const accent = CATEGORY_ACCENT[skill.category] || CATEGORY_ACCENT['営業'];
+    const diffStyle = DIFFICULTY_STYLE[skill.difficulty] || '';
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-xl border border-slate-200 p-6 flex flex-col h-full card-hover group"
-        >
-            <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 group-hover:bg-blue-50 group-hover:border-blue-100 transition-colors">
-                    <Icon className="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors" />
-                </div>
-                <span className={`text-xs font-semibold px-2 py-1 rounded-full ${difficultyColor}`}>
-                    {skill.difficulty}
-                </span>
-            </div>
-
-            <h3 className="font-bold text-lg text-slate-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors">
-                {skill.name}
-            </h3>
-
-            <p className="text-sm text-slate-500 mb-3 line-clamp-2 leading-relaxed">
-                {skill.description}
-            </p>
-
-            {/* アウトカムスニペット */}
-            {skill.examples.length > 0 && (
-                <p className="text-xs text-blue-600 bg-blue-50 rounded-lg px-3 py-2 mb-4 line-clamp-1">
-                    例: {skill.examples[0].title}
-                </p>
-            )}
-
-            {/* AIツール互換アイコン */}
-            <div className="flex gap-1.5 mb-4">
-                {[
-                    { name: 'GPT', color: '#10a37f' },
-                    { name: 'Claude', color: '#d97706' },
-                    { name: 'Gemini', color: '#4285f4' },
-                    { name: 'Copilot', color: '#7c3aed' },
-                ].map((t) => (
-                    <span
-                        key={t.name}
-                        className="text-[9px] font-bold px-1.5 py-0.5 rounded"
-                        style={{ color: t.color, backgroundColor: t.color + '12' }}
-                    >
-                        {t.name}
-                    </span>
-                ))}
-            </div>
-
-            <div className="mt-auto border-t border-slate-100 pt-4 flex items-center justify-between text-xs text-slate-500 font-medium">
-                <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1">
-                        <Icons.Clock className="w-3 h-3" />
-                        <span>{skill.timeSaved} 削減</span>
-                    </div>
-                    {skill.examples.length > 0 && (
-                        <span className="text-[10px] font-medium px-1.5 py-0.5 bg-amber-50 text-amber-600 border border-amber-200 rounded-full">
-                            使用例あり
+        <Link href={`/skills/${skill.id}`} className="block h-full group">
+            <div className="bg-white rounded-2xl overflow-hidden flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+                <div className="p-6 flex flex-col h-full">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className={`p-2.5 rounded-xl ${accent.bg}`}>
+                            <Icon className={`w-5 h-5 ${accent.icon}`} />
+                        </div>
+                        <span className={`text-[11px] font-medium px-2.5 py-1 rounded-full ${diffStyle}`}>
+                            {skill.difficulty}
                         </span>
+                    </div>
+
+                    <h3 className="font-semibold text-[15px] text-[#1d1d1f] mb-2 leading-snug group-hover:text-[#0071e3] transition-colors">
+                        {skill.name}
+                    </h3>
+
+                    <p className="text-[13px] text-[#86868b] mb-4 line-clamp-2 leading-relaxed">
+                        {skill.description}
+                    </p>
+
+                    {skill.examples.length > 0 && (
+                        <p className="text-[12px] text-[#86868b] bg-[#f5f5f7] rounded-xl px-3 py-2 mb-4 line-clamp-1">
+                            <span className="text-[#d2d2d7] mr-1">例:</span>{skill.examples[0].title}
+                        </p>
                     )}
+
+                    <div className="mt-auto pt-4 border-t border-black/5 flex items-center justify-between text-[12px] text-[#86868b]">
+                        <div className="flex items-center gap-1.5">
+                            <Icons.Clock className="w-3 h-3" />
+                            <span>{skill.timeSaved} 削減</span>
+                        </div>
+                        <Icons.ArrowRight className="w-3 h-3 text-[#d2d2d7] group-hover:text-[#0071e3] group-hover:translate-x-0.5 transition-all" />
+                    </div>
                 </div>
-                <Link
-                    href={`/skills/${skill.id}`}
-                    className="text-blue-600 hover:text-blue-700 flex items-center gap-1 group/link"
-                >
-                    詳細を見る
-                    <Icons.ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
-                </Link>
             </div>
-        </motion.div>
+        </Link>
     );
 };

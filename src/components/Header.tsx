@@ -8,27 +8,34 @@ export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-50 glass-panel border-b border-slate-200/50">
-            <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <header className="sticky top-0 z-50 glass-panel">
+            <div className="max-w-[980px] mx-auto px-6 h-12 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-slate-900">AI Skills Library</span>
-                    <span className="hidden sm:inline text-xs text-slate-400 font-medium">by ユーダイモニア</span>
+                    <span className="text-[21px] font-semibold tracking-tight text-[#1d1d1f]">
+                        AI Skills
+                    </span>
                 </Link>
 
-                <nav className="hidden md:flex items-center gap-6">
-                    <a href="/#skills" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                <nav className="hidden md:flex items-center gap-7">
+                    <a href="/#skills" className="text-xs text-[#424245] hover:text-[#1d1d1f] transition-colors">
                         スキル一覧
                     </a>
-                    <a href="/#how-to-use" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                    <a href="/#how-to-use" className="text-xs text-[#424245] hover:text-[#1d1d1f] transition-colors">
                         使い方
                     </a>
-                    <a href="/#faq" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
-                        よくある質問
+                    <a href="/#faq" className="text-xs text-[#424245] hover:text-[#1d1d1f] transition-colors">
+                        FAQ
                     </a>
+                    <Link
+                        href="/skills"
+                        className="text-xs font-medium text-white bg-[#1d1d1f] px-4 py-1.5 rounded-full hover:bg-[#000000] transition-colors"
+                    >
+                        スキルを探す
+                    </Link>
                 </nav>
 
                 <button
-                    className="md:hidden p-2 text-slate-600 hover:text-slate-900"
+                    className="md:hidden p-2 text-[#424245] hover:text-[#1d1d1f]"
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
                     {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -36,17 +43,20 @@ export function Header() {
             </div>
 
             {menuOpen && (
-                <div className="md:hidden border-t border-slate-200/50 bg-white/95 backdrop-blur-md">
-                    <nav className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-3">
-                        <a href="/#skills" className="text-sm font-medium text-slate-600 py-2" onClick={() => setMenuOpen(false)}>
+                <div className="md:hidden border-t border-black/5 bg-white/95 backdrop-blur-xl">
+                    <nav className="max-w-[980px] mx-auto px-6 py-4 flex flex-col gap-3">
+                        <a href="/#skills" className="text-sm text-[#424245] py-2" onClick={() => setMenuOpen(false)}>
                             スキル一覧
                         </a>
-                        <a href="/#how-to-use" className="text-sm font-medium text-slate-600 py-2" onClick={() => setMenuOpen(false)}>
+                        <a href="/#how-to-use" className="text-sm text-[#424245] py-2" onClick={() => setMenuOpen(false)}>
                             使い方
                         </a>
-                        <a href="/#faq" className="text-sm font-medium text-slate-600 py-2" onClick={() => setMenuOpen(false)}>
-                            よくある質問
+                        <a href="/#faq" className="text-sm text-[#424245] py-2" onClick={() => setMenuOpen(false)}>
+                            FAQ
                         </a>
+                        <Link href="/skills" className="text-sm font-medium text-[#1d1d1f] py-2" onClick={() => setMenuOpen(false)}>
+                            スキルを探す
+                        </Link>
                     </nav>
                 </div>
             )}

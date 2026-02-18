@@ -1,24 +1,23 @@
-import { Suspense } from 'react';
 import { HeroSection } from '@/components/HeroSection';
 import { StatsBar } from '@/components/StatsBar';
+import { ProblemSection } from '@/components/ProblemSection';
 import { FeaturedSkills } from '@/components/FeaturedSkills';
-import { CategoryGrid } from '@/components/CategoryGrid';
 import { HowToSection } from '@/components/HowToSection';
-import { SkillListing } from '@/components/SkillListing';
+import { TestimonialSection } from '@/components/TestimonialSection';
 import { FaqSection } from '@/components/FaqSection';
+import { CtaSection } from '@/components/CtaSection';
 
 export default function Home() {
     return (
         <>
             <HeroSection />
             <StatsBar />
+            <ProblemSection />
             <FeaturedSkills />
-            <CategoryGrid />
+            <TestimonialSection />
             <HowToSection />
-            <Suspense fallback={<div className="py-20 text-center text-slate-400">読み込み中...</div>}>
-                <SkillListing />
-            </Suspense>
             <FaqSection />
+            <CtaSection />
         </>
     );
 }

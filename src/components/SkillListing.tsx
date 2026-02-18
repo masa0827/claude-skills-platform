@@ -45,23 +45,23 @@ export function SkillListing() {
     }, [searchText, activeCategory]);
 
     return (
-        <section id="skills" className="section-padding bg-white">
-            <div className="max-w-6xl mx-auto">
-                <h2 className="text-2xl font-bold text-slate-900 mb-2 text-center">
+        <section id="skills" className="py-20 px-6 bg-white">
+            <div className="max-w-[980px] mx-auto">
+                <h2 className="text-[28px] font-semibold text-[#1d1d1f] mb-2 text-center">
                     スキル一覧
                 </h2>
-                <p className="text-sm text-slate-500 text-center mb-8">
+                <p className="text-[14px] text-[#86868b] text-center mb-8">
                     {filteredSkills.length}件のスキル
                 </p>
 
                 <div className="max-w-md mx-auto relative mb-6">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#86868b]" />
                     <input
                         type="text"
                         placeholder="スキルを検索..."
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 bg-white text-sm"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-black/10 focus:ring-2 focus:ring-[#0071e3]/20 focus:border-[#0071e3]/40 outline-none transition-all placeholder:text-[#86868b] bg-white text-[14px]"
                     />
                 </div>
 
@@ -70,10 +70,10 @@ export function SkillListing() {
                         <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
-                            className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                            className={`px-4 py-1.5 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
                                 activeCategory === cat
-                                    ? 'bg-slate-900 text-white'
-                                    : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                                    ? 'bg-[#1d1d1f] text-white'
+                                    : 'bg-white text-[#424245] border border-black/10 hover:bg-[#f5f5f7]'
                             }`}
                         >
                             {cat}
@@ -81,15 +81,15 @@ export function SkillListing() {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {filteredSkills.map((skill) => (
                         <SkillCard key={skill.id} skill={skill} />
                     ))}
                 </div>
 
                 {filteredSkills.length === 0 && (
-                    <div className="text-center py-16 text-slate-400">
-                        <p className="text-lg">該当するスキルが見つかりませんでした。</p>
+                    <div className="text-center py-16 text-[#86868b]">
+                        <p className="text-[17px]">該当するスキルが見つかりませんでした。</p>
                     </div>
                 )}
             </div>
