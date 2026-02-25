@@ -22,8 +22,39 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "AI Skills Library | 話しかけるだけでAIが専門家になる指示ファイル集",
+  metadataBase: new URL("https://agent-skills.eudaimonia.co.jp"),
+  title: {
+    default: "AI Skills Library | 話しかけるだけでAIが専門家になる指示ファイル集",
+    template: "%s | AI Skills Library",
+  },
   description: "日本のビジネスに最適化されたAIスキルのライブラリ。ChatGPT・Claude・Gemini・Copilot対応。スキルを設定するだけで、AIが文脈を読み取り、必要な専門知識を自動で起動。すべて無料。",
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "https://agent-skills.eudaimonia.co.jp",
+    siteName: "AI Skills Library",
+    title: "AI Skills Library | 話しかけるだけでAIが専門家になる指示ファイル集",
+    description: "日本のビジネスに最適化されたAIスキルのライブラリ。ChatGPT・Claude・Gemini・Copilot対応。スキルを設定するだけで、AIが文脈を読み取り、必要な専門知識を自動で起動。すべて無料。",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Skills Library | AIが専門家になる指示ファイル集",
+    description: "日本のビジネスに最適化されたAIスキルのライブラリ。ChatGPT・Claude・Gemini・Copilot対応。すべて無料。",
+  },
+  alternates: {
+    canonical: "https://agent-skills.eudaimonia.co.jp",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
