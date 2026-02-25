@@ -5,8 +5,6 @@ import { documentsNewSkills } from './documents-new';
 import { analysisNewSkills } from './analysis-new';
 import { efficiencyNewSkills } from './efficiency-new';
 import { marketingNewSkills } from './marketing-new';
-import { seoAdsNewSkills } from './seo-ads-new';
-import { customerNewSkills } from './customer-new';
 import { salesSkills } from './sales';
 import { snsSkills } from './sns';
 import { accountingSkills } from './accounting';
@@ -18,8 +16,6 @@ export const skills: Skill[] = [
     ...analysisNewSkills,
     ...efficiencyNewSkills,
     ...marketingNewSkills,
-    ...seoAdsNewSkills,
-    ...customerNewSkills,
     ...salesSkills,
     ...snsSkills,
     ...accountingSkills,
