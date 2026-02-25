@@ -7,20 +7,20 @@ const steps = [
     {
         icon: Search,
         num: '1',
-        title: 'スキルを探す',
-        description: 'カテゴリ、検索、またはAIチャットで業務に合ったスキルを見つけます。',
+        title: '業務に合うスキルを見つける',
+        description: 'カテゴリや検索から、あなたの業務にぴったりのスキルを選びます。AIチャットに相談もできます。',
     },
     {
         icon: Copy,
         num: '2',
-        title: 'コピーしてAIに設定',
-        description: 'スキルをコピーしてAIに貼り付け。Claude.aiなら設定画面からインストールするだけ。',
+        title: 'AIにインストール',
+        description: 'ワンクリックでコピーしてAIに貼り付け。Claudeなら設定画面からZIPをアップロードするだけ。',
     },
     {
         icon: Zap,
         num: '3',
-        title: '話しかけるだけで自動起動',
-        description: 'AIが会話の文脈を読み取り、最適なスキルを自動で起動。指示不要で専門家レベルの成果物が出てきます。',
+        title: '普段通り話しかけるだけ',
+        description: '特別な指示は不要。AIが文脈を読み取り、スキルを自動で起動。最初から専門家品質のアウトプットが出てきます。',
     },
 ];
 
@@ -51,10 +51,10 @@ export function HowToSection() {
             <div className="max-w-[720px] mx-auto">
                 <div className="text-center mb-14">
                     <h2 className="text-[32px] md:text-[40px] font-semibold tracking-tight text-[#1d1d1f] leading-tight mb-3">
-                        3ステップで始められます。
+                        セットアップは、3分。
                     </h2>
                     <p className="text-[17px] text-[#86868b]">
-                        専門知識は不要です。
+                        技術知識は不要。コピー＆ペーストだけで完了します。
                     </p>
                 </div>
 

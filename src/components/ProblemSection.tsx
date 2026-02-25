@@ -6,18 +6,18 @@ import { Brain, Globe, Lock } from 'lucide-react';
 const problems = [
     {
         icon: Brain,
-        label: 'AIは優秀。でも専門家ではない。',
-        desc: 'ChatGPTもClaudeも何でもこなしますが、あなたの業界の常識は持っていません。営業のPREP法、法務のリスク評価、医療の安全基準。毎回ゼロから説明する必要があります。',
+        label: '毎回「いい感じ」にならない',
+        desc: 'AIに同じ仕事を頼んでも、出力の品質がバラバラ。期待通りの結果を得るまで何度もやり直し。プロンプトを工夫しても、安定した品質には届きません。',
     },
     {
         icon: Globe,
-        label: '日本のビジネス作法を知らない。',
-        desc: '敬語の使い分け、情報密度の高い資料構成、稟議書のフォーマット。日本のビジネス文化に沿った出力は、詳細な指示なしには出てきません。',
+        label: '日本のビジネスに合わない',
+        desc: '敬語の使い分け、稟議書のフォーマット、日本式の資料構成。海外製AIのデフォルト出力では、そのまま使えるレベルになりません。',
     },
     {
         icon: Lock,
-        label: 'できる人の技が、組織に残らない。',
-        desc: 'AIを上手に使いこなす人のノウハウは、個人のチャット履歴に埋もれたまま。チームの共有資産にならず、人が抜けるとゼロに戻ります。',
+        label: 'ノウハウが属人化する',
+        desc: 'AIを上手に使える人のプロンプトは個人に閉じたまま。チームに共有できず、人が抜ければノウハウもゼロに。',
     },
 ];
 
@@ -33,10 +33,11 @@ export function ProblemSection() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-[32px] md:text-[40px] font-semibold tracking-tight text-[#1d1d1f] leading-tight mb-4">
-                        プロンプトでは、<br className="md:hidden" />届かない領域がある。
+                        AIを使いこなせない理由。
                     </h2>
                     <p className="text-[17px] text-[#86868b] max-w-[600px] mx-auto leading-relaxed">
-                        AIの能力を引き出すために必要なのは、上手な指示ではなく、専門性の注入です。
+                        問題はAIの性能ではなく、「何を知っているか」。<br className="hidden md:block" />
+                        専門知識を持たないAIに、専門的なアウトプットは出せません。
                     </p>
                 </motion.div>
 
@@ -74,7 +75,7 @@ export function ProblemSection() {
                     className="text-center text-[17px] text-[#86868b] mt-14"
                 >
                     解決策は、<br className="md:hidden" />
-                    <span className="text-[#1d1d1f] font-semibold">AIに専門性を永続的に注入するスキルという仕組み。</span>
+                    <span className="text-[#1d1d1f] font-semibold">AIに「専門家の頭脳」をインストールする、スキルという仕組み。</span>
                 </motion.p>
             </div>
         </section>
