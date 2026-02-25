@@ -2,8 +2,11 @@ import { Suspense } from 'react';
 import { SkillLibrary } from '@/components/SkillLibrary';
 
 export const metadata = {
-    title: 'スキルライブラリ | AI Skills Library',
+    title: 'スキルライブラリ',
     description: 'ビジネスで使えるAIスキルを検索・カテゴリで探せます。ChatGPT・Claude・Gemini・Copilot対応。',
+    alternates: {
+        canonical: 'https://agent-skills.eudaimonia.co.jp/skills',
+    },
 };
 
 export default function SkillsPage() {

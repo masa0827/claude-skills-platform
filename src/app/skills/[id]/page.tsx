@@ -21,9 +21,24 @@ export async function generateMetadata({
     const { id } = await params;
     const skill = skills.find((s) => s.id === id);
     if (!skill) return {};
+    const url = `https://agent-skills.eudaimonia.co.jp/skills/${skill.id}`;
     return {
-        title: `${skill.name} | AI Skills Library`,
+        title: skill.name,
         description: skill.description,
+        openGraph: {
+            title: `${skill.name} | AI Skills Library`,
+            description: skill.description,
+            url,
+            type: 'article',
+        },
+        twitter: {
+            card: 'summary' as const,
+            title: skill.name,
+            description: skill.description,
+        },
+        alternates: {
+            canonical: url,
+        },
     };
 }
 
@@ -64,8 +79,61 @@ export default async function SkillPage({
     const catColor = CATEGORY_COLOR[skill.category] || 'text-[#86868b] bg-[#f5f5f7]';
     const catAccent = CATEGORY_ACCENT[skill.category] || 'bg-[#86868b]';
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: skill.name,
+        description: skill.longDescription,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'JPY',
+        },
+        author: {
+            '@type': 'Organization',
+            name: '株式会社ユーダイモニア',
+            url: 'https://eudaimonia.co.jp',
+        },
+    };
+
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'ホーム',
+                item: 'https://agent-skills.eudaimonia.co.jp',
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: skill.category,
+                item: `https://agent-skills.eudaimonia.co.jp/skills?category=${encodeURIComponent(skill.category)}`,
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: skill.name,
+                item: `https://agent-skills.eudaimonia.co.jp/skills/${skill.id}`,
+            },
+        ],
+    };
+
     return (
-        <div className="max-w-[980px] mx-auto px-6 py-8">
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
+            <div className="max-w-[980px] mx-auto px-6 py-8">
             {/* パンくず */}
             <nav className="flex items-center gap-1.5 text-[13px] text-[#86868b] mb-8">
                 <Link href="/" className="hover:text-[#1d1d1f] transition-colors">ホーム</Link>
@@ -221,5 +289,6 @@ export default async function SkillPage({
                 <PromptViewer content={skill.content} />
             </div>
         </div>
+        </>
     );
 }
