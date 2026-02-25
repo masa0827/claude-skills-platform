@@ -78,19 +78,23 @@ export function HeroSection() {
     return (
         <section className="pt-32 pb-20 px-6">
             <div className="max-w-[980px] mx-auto text-center">
+                <p className="text-[13px] font-semibold text-[#0071e3] uppercase tracking-widest mb-4">
+                    AI Skills Library
+                </p>
+
                 <h1 className="text-[40px] md:text-[56px] font-semibold tracking-tight text-[#1d1d1f] leading-[1.07] mb-6">
-                    話しかけるだけで、<br className="hidden md:block" />
-                    AIが専門家になる。
+                    AIを、あなたの業務の<br className="hidden md:block" />
+                    専門家に変える。
                 </h1>
 
                 <p className="text-[19px] md:text-[21px] text-[#86868b] leading-relaxed max-w-[620px] mx-auto mb-4">
-                    スキルとは、AIに業務の専門知識を注入する指示ファイル。<br className="hidden md:block" />
-                    一度設定すれば、AIが会話の文脈を読み取り、<br className="hidden md:block" />
-                    必要な専門スキルを自動で起動します。
+                    「スキル」は、AIに専門知識を注入する設定ファイル。<br className="hidden md:block" />
+                    設定するだけで、営業・マーケ・CS・バックオフィスの<br className="hidden md:block" />
+                    プロフェッショナルがAIの中に常駐します。
                 </p>
 
                 <p className="text-[17px] text-[#86868b] mb-8">
-                    日本のビジネスに最適化。ChatGPT / Claude / Gemini / Copilot 対応。すべて無料。
+                    ChatGPT / Claude / Gemini / Copilot 対応。すべて無料・登録不要。
                 </p>
 
                 <div className="flex items-center justify-center gap-4 mb-6">
