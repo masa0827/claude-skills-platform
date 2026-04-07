@@ -8,6 +8,9 @@ import { marketingNewSkills } from './marketing-new';
 import { salesSkills } from './sales';
 import { snsSkills } from './sns';
 import { accountingSkills } from './accounting';
+import { marketingAdditionSkills } from './marketing-additions';
+import { csSalesAdditionSkills } from './cs-sales-additions';
+import { claudeCodeSkills } from './claude-code-skills';
 
 export const skills: Skill[] = [
     ...existingSkills,
@@ -19,4 +22,7 @@ export const skills: Skill[] = [
     ...salesSkills,
     ...snsSkills,
     ...accountingSkills,
+    ...marketingAdditionSkills,
+    ...csSalesAdditionSkills,
+    ...claudeCodeSkills,
 ];

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Copy, Download, Upload, Check, ChevronDown, FileText, Clipboard } from 'lucide-react';
+import { Copy, Download, Upload, Check, ChevronDown, FileText, Clipboard, Terminal } from 'lucide-react';
 import JSZip from 'jszip';
 import { Skill } from '@/lib/types';
 import { generateSkillMd } from '@/lib/skillmd';
@@ -30,6 +30,7 @@ function Collapsible({ title, children, defaultOpen = false }: { title: string; 
 export function SkillActions({ skill }: { skill: Skill }) {
     const [copiedPrompt, setCopiedPrompt] = useState(false);
     const [copiedContent, setCopiedContent] = useState(false);
+    const [copiedInstall, setCopiedInstall] = useState(false);
 
     const textToCopy = skill.promptTemplate || skill.content;
 
@@ -193,6 +194,49 @@ export function SkillActions({ skill }: { skill: Skill }) {
                         Claude用ZIP (.zip)
                     </button>
                 </Collapsible>
+
+                {skill.githubPath && (
+                    <Collapsible title="Claude Code: スキルをインストール" defaultOpen>
+                        <p className="text-[14px] text-[#86868b] mb-3">
+                            ターミナルで以下を実行すると、プロジェクトの
+                            <code className="px-1.5 py-0.5 bg-white rounded text-[12px] mx-1 font-mono">.claude/skills/</code>
+                            に配置されます。
+                        </p>
+                        <div className="bg-[#1d1d1f] rounded-xl px-4 py-3 mb-3 flex items-center justify-between gap-3">
+                            <code className="text-[12px] text-emerald-400 font-mono break-all">
+                                {`npx degit ${skill.githubPath} .claude/skills/${skill.githubPath.split('/').pop()}`}
+                            </code>
+                            <button
+                                onClick={async () => {
+                                    const cmd = `npx degit ${skill.githubPath} .claude/skills/${skill.githubPath!.split('/').pop()}`;
+                                    await navigator.clipboard.writeText(cmd).catch(() => {});
+                                    setCopiedInstall(true);
+                                    setTimeout(() => setCopiedInstall(false), 2000);
+                                }}
+                                className="shrink-0"
+                            >
+                                {copiedInstall
+                                    ? <Check className="w-4 h-4 text-emerald-400" />
+                                    : <Copy className="w-4 h-4 text-[#86868b] hover:text-white transition-colors" />
+                                }
+                            </button>
+                        </div>
+                        {skill.setupNote && (
+                            <p className="text-[13px] text-[#86868b] bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                                ⚠️ {skill.setupNote}
+                            </p>
+                        )}
+                        <a
+                            href={`https://github.com/${skill.githubPath}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 flex items-center gap-1.5 text-[13px] text-[#0071e3] hover:underline"
+                        >
+                            <Terminal className="w-3.5 h-3.5" />
+                            GitHubで詳細を見る
+                        </a>
+                    </Collapsible>
+                )}
 
                 <Collapsible title="開発者向け: MDファイル">
                     <p className="text-[14px] text-[#86868b] mb-3">

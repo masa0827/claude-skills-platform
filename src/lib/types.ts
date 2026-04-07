@@ -33,6 +33,10 @@ export interface Skill {
   useCases?: string[];
   /** より良い結果を出すためのコツ */
   tips?: string[];
+  /** GitHub上のパス（例: masa0827/claude-skills/slide-creator）。Claude Codeスキルとして配布する場合に設定 */
+  githubPath?: string;
+  /** Claude Codeスキル固有のセットアップ手順（npmインストール等） */
+  setupNote?: string;
 }
 
 export type AiTool = 'chatgpt' | 'claude' | 'gemini' | 'copilot';
