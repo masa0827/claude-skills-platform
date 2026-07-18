@@ -86,7 +86,7 @@ export const claudeCodeSkills: Skill[] = [
     {
         id: 'ai-writer-claude-code',
         name: 'AIライター（Claude Code）',
-        description: 'AI臭ゼロの自然な日本語文章を生成。もとやま氏「AIっぽい文章表現大全」の6パターン排除・3つの崩し技術を実装。',
+        description: 'AI臭ゼロの自然な日本語文章を生成。AI特有の6パターン排除・3つの崩し技術を実装。',
         longDescription: 'ブログ・メルマガ・note・SNSなど、あらゆる文章生成時に自動適用。Markdown記法なし、語尾の変化、主観の混入、論理の蛇行など「人間が書いた」としか思えない文章を生成します。Claude Codeのプロジェクトに配置して使います。',
         category: 'マーケティング',
         iconName: 'PenTool',
@@ -99,7 +99,7 @@ export const claudeCodeSkills: Skill[] = [
 
 このスキルは、AIが生成する文章から「AI臭」を完全に除去し、人間が書いたような自然で説得力のある文章を生成します。
 
-もとやま氏（@ysk_motoyama）の「AIっぽい文章表現大全」で定義された6つのAI特有パターンを避け、3つの「崩し技術」を適用します。
+AI生成文に典型的な6つのパターンを避け、3つの「崩し技術」を適用します。
 
 ## AIっぽさの6つの特徴（絶対に避ける）
 
